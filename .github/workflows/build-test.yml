@@ -13,12 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      IMAGE_TAG: ${{ github.ref.split('/').last }}-${{ github.run_number }}
+      IMAGE_TAG: test
+      # IMAGE_TAG: ${{ github.ref.split('/').last }}-${{ github.run_number }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build and test
         run: |
+          echo $GITHUB_REPOSITORY
           echo Building Image bloggingdemo:${{ github.sha }}
           docker build -t bloggingdemo:${{ github.sha }} .
           echo Testing Image bloggingdemo:${{ github.sha }}
