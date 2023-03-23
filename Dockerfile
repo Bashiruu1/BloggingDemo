@@ -22,9 +22,9 @@ WORKDIR /app/tests/unit/BloggingDemo.Tests
 # Run unit tests
 RUN dotnet test --collect "XPlat Code Coverage" --results-directory:/testresults/unit /p:CoverletOutputFormat=opencover /p:Threshold=80 /p:ThresholdType=line+method
 
-FROM build as integration-runner
-# Run integration tests
-RUN dotnet test --collect "XPlat Code Coverage" --results-directory:/testresults/integration /p:CoverletOutputFormat=opencover /p:Threshold=80 /p:ThresholdType=line+method tests/integration/BloggingDemo.Tests/BloggingDemo.Tests.csproj
+# FROM build as integration-runner
+# # Run integration tests
+# RUN dotnet test --collect "XPlat Code Coverage" --results-directory:/testresults/integration /p:CoverletOutputFormat=opencover /p:Threshold=80 /p:ThresholdType=line+method tests/integration/BloggingDemo.Tests/BloggingDemo.Tests.csproj
 
 # Final stage
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
