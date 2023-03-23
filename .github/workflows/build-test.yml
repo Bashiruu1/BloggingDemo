@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build and test
         run: |
-          echo ${GITHUB_REPOSITORY}
+          echo ${{github.event.repository.name}}
           echo Building Image bloggingdemo:${{ github.sha }}
           docker build -t bloggingdemo:${{ github.sha }} .
           echo Testing Image bloggingdemo:${{ github.sha }}
